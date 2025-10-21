@@ -10,6 +10,17 @@ class App {
 
   race(participations, trial){
     
+    let participtionList = participations.split(',');
+    let i = 1;
+    
+    for(let x of participtionList){
+
+    }
+    
+    while(i <= trial){
+
+    }
+
   }
 
 }
