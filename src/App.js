@@ -5,20 +5,14 @@ class App {
     const PARTICIPATIONS = await MissionUtils.Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분');
     const TRIAL = Number(await MissionUtils.Console.readLineAsync('시도할 횟수는 몇 회인가요?'));
     await MissionUtils.Console.print(`실행 결과\n`);
-    this.race(PARTICIPATIONS, TRIAL);
+    this.race(PARTICIPATIONS, TRIAL);    
   }
 
   race(participations, trial){
     
-    let participationList = participations.split(',');
-    let i = 1;
+    const RACER = participations.split(',').map(name => ({name, position: 0}));
     
-    for(let x of participationList){
-      let name = x;
-    }
-    
-    while(i <= trial){
-
+    for(let i = 0; i < trial; i++){
     }
 
   }
