@@ -14,14 +14,23 @@ class App {
     
     for(let i = 0; i < trial; i++){
       this.forward(RACER);
+      this.printRound(RACER);
     }
 
   }
 
   forward(racer){
-    const RANDOMVALUE = MissionUtils.Console.pickNumberInRange(0, 9);
-    if(RANDOMVALUE >= 4) racer.position++;
-    MissionUtils.Console.print(`${racer.name} : ${'-'.repeat(racer.position)}`);
+    racer.forEach( racer => {
+      const RANDOMVALUE = MissionUtils.Random.pickNumberInRange(0, 9);
+      if(RANDOMVALUE >= 4) racer.position++;
+    });
+    
+  }
+
+  printRound(racer){
+    racer.forEach(racer => {
+      MissionUtils.Console.print(`${racer.name} : ${'-'.repeat(racer.position)}`);
+    });
   }
 
 }
