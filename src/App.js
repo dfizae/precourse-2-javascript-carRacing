@@ -13,8 +13,15 @@ class App {
     const RACER = participations.split(',').map(name => ({name, position: 0}));
     
     for(let i = 0; i < trial; i++){
+      this.forward(RACER);
     }
 
+  }
+
+  forward(racer){
+    const RANDOMVALUE = MissionUtils.Console.pickNumberInRange(0, 9);
+    if(RANDOMVALUE >= 4) racer.position++;
+    MissionUtils.Console.print(`${racer.name} : ${'-'.repeat(racer.position)}`);
   }
 
 }
