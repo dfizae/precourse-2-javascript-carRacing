@@ -10,7 +10,10 @@ class App {
 
   race(participations, trial){
     
-    const RACER = participations.split(',').map(name => ({name, position: 0}));
+    const RACER = participations.split(',').map(name => {
+      if(name.length > 5) throw new Error("[ERROR] : 레이서 명이 5자 이하만 가능합니다..");
+      return { name, position: 0 };
+    });
     
     for(let i = 0; i < trial; i++){
       this.forward(RACER);
