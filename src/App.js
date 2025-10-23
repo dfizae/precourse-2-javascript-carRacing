@@ -43,10 +43,10 @@ class App {
     const maxPosition = Math.max(...racer.map((r) => r.position));
     const winners = racer.filter((r) => r.position === maxPosition).map((r) => r.name);
   
-    if(winners == 1){
+    if(winners.length == 1){
       MissionUtils.Console.print(`최종 우승자 : ${winners}`);
     }
-    if(winners > 1){
+    if(winners.length > 1){
       MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
     }
   }
