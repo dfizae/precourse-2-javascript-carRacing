@@ -10,6 +10,7 @@ class App {
 
   race(participations, trial){
     
+    // position: 차수별 드라이브 별 등수가 아닌 위치 의미
     const racer = participations.split(',').map(name => {
       if(name.length > 5) throw new Error("[ERROR] : 레이서 명이 5자 이하만 가능합니다..");
       return { name, position: 0 };
@@ -18,9 +19,8 @@ class App {
     for(let i = 0; i < trial; i++){
       this.forward(racer);
       this.printRound(racer);
-      this.printWinner()
-    }
-
+    }    
+    this.printWinners(racer);
   }
 
   forward(racer){
@@ -28,16 +28,28 @@ class App {
       const RANDOMVALUE = MissionUtils.Random.pickNumberInRange(0, 9);
       if(RANDOMVALUE >= 4) racer.position++;
     });
-    
   }
 
   printRound(racer){
+    let roundPosition = racer.position;
     racer.forEach(racer => {
-      MissionUtils.Console.print(`${racer.name} : ${'-'.repeat(racer.position)}`);
+      MissionUtils.Console.print(`${racer.name} : ${'-'.repeat(roundPosition)}`);
     });
     MissionUtils.Console.print('');
-  }
 
+  }
+  
+  printWinners(racer){
+    const maxPosition = Math.max(...racer.map((r) => r.position));
+    const winners = racer.filter((r) => r.position === maxPosition).map((r) => r.name);
+  
+    if(winners == 1){
+      MissionUtils.Console.print(`최종 우승자 : ${winners}`);
+    }
+    if(winners > 1){
+      MissionUtils.Console.print(`최종 우승자 : ${winners.join(', ')}`);
+    }
+  }
 }
 
 export default App;
