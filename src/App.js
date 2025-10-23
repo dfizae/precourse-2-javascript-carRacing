@@ -18,6 +18,7 @@ class App {
     for(let i = 0; i < trial; i++){
       this.forward(racer);
       this.printRound(racer);
+      this.printWinner()
     }
 
   }
@@ -34,6 +35,7 @@ class App {
     racer.forEach(racer => {
       MissionUtils.Console.print(`${racer.name} : ${'-'.repeat(racer.position)}`);
     });
+    MissionUtils.Console.print('');
   }
 
 }
