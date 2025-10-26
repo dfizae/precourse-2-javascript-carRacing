@@ -39,21 +39,21 @@
 ## 📌 코드 구조
 - `App.js` : 프로그램 실행 시작점, 전체 로직 포함 
   - `run()` : 사용자 입력 및 race() 호출
-  -`race()` : 레이서 객체 생성, 차수 반복, 최종 우승자 출력
-  -`createRacers()` : 입력 검증 및 레이서 배열 생성
-  -`runRounds()` : forward + printRound 호출
-  -`forward()` : 전진 여부 결정
-  -`printRound()` : 차수별 위치 출력
-  -`printWinners()` : 최종 우승자 출력
+  - `race()` : 레이서 객체 생성, 차수 반복, 최종 우승자 출력
+  - `createRacers()` : 입력 검증 및 레이서 배열 생성
+  - `runRounds()` : forward + printRound 호출
+  - `forward()` : 전진 여부 결정
+  - `printRound()` : 차수별 위치 출력
+  - `printWinners()` : 최종 우승자 출력
 
 ---
 
 ## 📌 라이브러리
 
--`@woowacourse/mission-utils`
-  -`Random.pickNumberInRange()` : 랜덤 값 추출
-  -`Console.readLineAsync()` : 입력
-  -`Console.print()` : 출력
+- `@woowacourse/mission-utils`
+  - `Random.pickNumberInRange()` : 랜덤 값 추출
+  - `Console.readLineAsync()` : 입력
+  - `Console.print()` : 출력
 
 ---
 
