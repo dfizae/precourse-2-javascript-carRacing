@@ -13,12 +13,20 @@ class App {
     this.race(participations, trial);    
   }
 
-  race(participations, trial){
-    
+  race(participations, trial){ 
     const racers = participations.split(',').map(name => {
-      if(name.length > 5) throw new Error("[ERROR] : 레이서 명이 5자 이하만 가능합니다.");
-      if(name.length === 0 || !name.trim()) throw new Error("[ERROR] : 레이서 명이 0자여서는 안됩니다.")
-      return { name, position: 0 };
+      const trimmedName = name.trim();
+
+      if (!trimmedName) 
+        throw new Error('[ERROR] : 레이서 명이 0자여서는 안됩니다.');
+
+      if (trimmedName.length > 5) 
+        throw new Error('[ERROR] : 레이서 명이 5자 이하만 가능합니다.');
+      
+      if (/[^a-zA-Z가-힣]/.test(trimmedName)) 
+        throw new Error('[ERROR] : 레이서 명은 문자만 가능하며 숫자/특수문자 불가');
+      
+      return { name: trimmedName, position: 0 };
     });
     
     for(let i = 0; i < trial; i++){
