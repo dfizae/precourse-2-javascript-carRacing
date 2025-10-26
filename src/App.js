@@ -4,6 +4,11 @@ class App {
   async run() {
     const participations = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분\n');
     const trial = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
+   
+    if (Number.isNaN(trial) || trial <= 0) {
+      throw new Error('[ERROR] : 시도 횟수는 1 이상의 숫자여야 합니다.');
+    }
+
     await Console.print(`실행 결과\n`);
     this.race(participations, trial);    
   }
@@ -11,7 +16,8 @@ class App {
   race(participations, trial){
     
     const racers = participations.split(',').map(name => {
-      if(name.length > 5) throw new Error("[ERROR] : 레이서 명이 5자 이하만 가능합니다..");
+      if(name.length > 5) throw new Error("[ERROR] : 레이서 명이 5자 이하만 가능합니다.");
+      if(name.length === 0 || !name.trim()) throw new Error("[ERROR] : 레이서 명이 0자여서는 안됩니다.")
       return { name, position: 0 };
     });
     
