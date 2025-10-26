@@ -2,45 +2,44 @@ import { Console, Random } from "@woowacourse/mission-utils";
 
 class App {
   async run() {
-    const participations = await Console.readLineAsync(
-      '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-    );
+    const participations = await Console.readLineAsync('경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n');
     const trial = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
-
+   
     if (Number.isNaN(trial) || trial <= 0) {
       throw new Error('[ERROR] : 시도 횟수는 1 이상의 숫자여야 합니다.');
     }
 
-    Console.print('실행 결과\n');
-    this.race(participations, trial);
+    await Console.print(`실행 결과\n`);
+    this.race(participations, trial);    
   }
 
-  race(participations, trial) {
-    const racers = this.createRacers(participations);
-    this.runRounds(racers, trial);
-    this.printWinners(racers);
-  }
+  race(participations, trial) { 
+    const names = participations.split(',').map(name => name.trim());
 
-  createRacers(participations) {
-    return participations.split(',').map(name => {
-      const trimmedName = name.trim();
+    const nameSet = new Set(names);
+    if (names.length !== nameSet.size) {
+      throw new Error('[ERROR] : 중복된 레이서 이름이 존재합니다.');
+    }
 
-      if (!trimmedName) 
+    const racers = names.map(name => {
+      if (!name) 
         throw new Error('[ERROR] : 레이서 명이 0자여서는 안됩니다.');
-      if (trimmedName.length > 5) 
+
+      if (name.length > 5) 
         throw new Error('[ERROR] : 레이서 명이 5자 이하만 가능합니다.');
-      if (/[^a-zA-Z가-힣]/.test(trimmedName)) 
+      
+      if (/[^a-zA-Z가-힣]/.test(name)) 
         throw new Error('[ERROR] : 레이서 명은 문자만 가능하며 숫자/특수문자 불가');
-
-      return { name: trimmedName, position: 0 };
+      
+      return { name, position: 0 };
     });
-  }
-
-  runRounds(racers, trial) {
+    
     for (let i = 0; i < trial; i++) {
       this.forward(racers);
       this.printRound(racers);
-    }
+    }    
+
+    this.printWinners(racers);
   }
 
   forward(racers) {
@@ -56,11 +55,11 @@ class App {
     });
     Console.print('');
   }
-
-  printWinners(racers) {
-    const maxPosition = Math.max(...racers.map(r => r.position));
-    const winners = racers.filter(r => r.position === maxPosition).map(r => r.name);
-
+  
+  printWinners(racer) {
+    const maxPosition = Math.max(...racer.map(r => r.position));
+    const winners = racer.filter(r => r.position === maxPosition).map(r => r.name);
+  
     if (winners.length === 1) {
       Console.print(`최종 우승자 : ${winners[0]}`);
     } else {
