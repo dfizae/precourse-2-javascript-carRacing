@@ -42,7 +42,7 @@
 ## 📌 파일 구조
 
 ```sh
-javascript-racingcar-8/
+precourse-2-javascript-carRacing/
 ├── tests/
 │   └── ApplicationTest.js : 테스트 코드 관리
 ├── node_modules/
@@ -50,7 +50,7 @@ javascript-racingcar-8/
 ├── constants/
 │   └── error.js : 에러 메시지 상수화
 ├── src/
-|   ├── App.js
+│   ├── App.js
 │   └── index.js    
 ├── .gitignore
 ├── .npmrc 
