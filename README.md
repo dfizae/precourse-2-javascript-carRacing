@@ -70,7 +70,7 @@ precourse-2-javascript-carRacing/
   - `forward()` : 전진 여부 결정
   - `printRound()` : 차수별 위치 출력
   - `printWinners()` : 최종 우승자 출력
-  - `printRanking()` : 최종 순위표 출력 (공동 순위 반영)
+  - `printRanking()` : 최종 순위표 출력 (공동 순위 반영) (출력 형식에 어긋난거 같아 주석 처리)
 
 - `constants/error.js` : 에러 메시지 상수화
 - `constants/message.js` : 입출력 메시지 상수화

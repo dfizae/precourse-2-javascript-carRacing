@@ -38,7 +38,7 @@ class App {
     }    
 
     this.printWinners(racers);
-    this.printRanking(racers);
+/*  this.printRanking(racers); */
   }
 
   forward(racers) {
@@ -66,7 +66,7 @@ class App {
     }
   }
 
-  printRanking(racers) {
+  /* printRanking(racers) {
     Console.print(MESSAGE.RANKING_TITLE);
 
     let prevPosition = null;
@@ -84,7 +84,7 @@ class App {
       prevPosition = r.position;
       Console.print(`${rank}위: ${r.name}`);
     });
-  }
+  } */
 }
 
 export default App;
