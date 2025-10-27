@@ -17,11 +17,6 @@ class App {
   race(participations, trial) { 
     const names = participations.split(',').map(name => name.trim());
 
-    const nameSet = new Set(names);
-    if (names.length !== nameSet.size) {
-      throw new Error(ERROR.NAME_DUPLICATION);
-    }
-
     const racers = names.map(name => {
       if (!name) 
         throw new Error(ERROR.EMPTY_NAME);
@@ -34,13 +29,19 @@ class App {
       
       return { name, position: 0 };
     });
-    
+
+    const nameSet = new Set(names);
+    if (names.length !== nameSet.size) {
+      throw new Error(ERROR.NAME_DUPLICATION);
+    }
+
     for (let i = 0; i < trial; i++) {
       this.forward(racers);
       this.printRound(racers);
     }    
 
     this.printWinners(racers);
+    this.printRanking(racers);
   }
 
   forward(racers) {
@@ -67,6 +68,28 @@ class App {
       Console.print(`최종 우승자 : ${winners.join(', ')}`);
     }
   }
-}
+
+  // 전체 순위표 출력 함수
+  printRanking(racers) {
+    Console.print('\n--- 전체 순위표 ---');
+    const sorted = [...racers].sort((a, b) => b.position - a.position);
+    
+    let currentRank = 1;
+    // 이전 레이서 포지션
+    let prevPosition = null;
+    let sameRankCount = 0;
+    
+    sorted.forEach((r, idx) => {
+      if (r.position === prevPosition) {
+        sameRankCount++;
+      } else {
+        currentRank += sameRankCount;
+        sameRankCount = 1;
+      }
+      Console.print(`${currentRank}위: ${r.name}`);
+      prevPosition = r.position;
+    });
+  }
+ }
 
 export default App;
