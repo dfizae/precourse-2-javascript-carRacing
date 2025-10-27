@@ -1,5 +1,3 @@
-# javascript-racingcar-precourse
-
 # 자동차 경주 게임 개발
 ---
 
@@ -12,7 +10,8 @@
 ## 📌 기능 목록
 
 ### 1. 사용자 입력
-- 자동차 이름 입력 (쉼표 `,` 기준으로 구분)
+- 자동차 이름 입력 
+  - 쉼표 `,` 기준으로 구분
   - 이름은 1~5자  
   - 한글/영문만 가능 (숫자, 특수문자 불가)
 - 시도 횟수 입력
@@ -40,7 +39,28 @@
 
 ---
 
-## 📌 코드 구조
+## 📌 파일 구조
+
+```sh
+javascript-racingcar-8/
+├── tests/
+│   └── ApplicationTest.js : 테스트 코드 관리
+├── node_modules/
+│   └── ...
+├── constants/
+│   └── error.js : 에러 메시지 상수화
+├── src/
+|   ├── App.js
+│   └── index.js    
+├── .gitignore
+├── .npmrc 
+├── package-lock.json
+├── package.json
+└── README.md 
+```
+
+
+- ## 📌 코드 구조
 - `src/App.js` : 프로그램 실행 시작점, 전체 로직 포함 
   - `run()` : 사용자 입력 및 race() 호출
   - `race()` : 레이서 객체 생성, 차수 반복, 최종 우승자 출력
