@@ -49,6 +49,7 @@ precourse-2-javascript-carRacing/
 │   └── ...
 ├── constants/
 │   └── error.js : 에러 메시지 상수화
+│   └── message.js : 입출력 메시지 상수화
 ├── src/
 │   ├── App.js
 │   └── index.js    
@@ -72,6 +73,7 @@ precourse-2-javascript-carRacing/
   - `printRanking()` : 최종 순위표 출력 (공동 순위 반영)
 
 - `constants/error.js` : 에러 메시지 상수화
+- `constants/message.js` : 입출력 메시지 상수화
 <br>
 
 ---
