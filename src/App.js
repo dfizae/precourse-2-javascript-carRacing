@@ -1,7 +1,7 @@
 // src/App.js
 import { Console, Random } from "@woowacourse/mission-utils";
-import { ERROR } from '../constants/error.js';
-import { MESSAGE } from '../constants/message.js';
+import { ERROR } from './constants/error.js';
+import { MESSAGE } from './constants/message.js';
 
 class App {
   async run() {
