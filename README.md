@@ -89,6 +89,12 @@ precourse-2-javascript-carRacing/
 ---
 
 ## 📌 테스트
-`ApplicationTest.js`
-Jest를 활용한 단위 테스트 구현
-사용자 입력, 랜덤값, 출력 로그 검증
+- `ApplicationTest.js`
+  - Jest를 활용한 단위 테스트 구현
+  - 사용자 입력, 랜덤값, 출력 로그 검증
+- `InputValidation.js` 
+  - 입력 관련 예외 처리 테스트 코드
+- `RaceProgressTest.js`
+  - 게임 진행(전진, 차수 출력) 관련 테스트 코드 
+- `WinnerTest.js`
+  - 최종 우승자(단독, 공동) 테스트 코드
