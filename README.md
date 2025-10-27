@@ -44,7 +44,10 @@
 ```sh
 precourse-2-javascript-carRacing/
 ├── tests/
-│   └── ApplicationTest.js : 테스트 코드 관리
+│   └── ApplicationTest.js : 기존 테스트 코드 관리
+│   └── InputValidation.js : 입력 관련 예외 처리 테스트 코드
+│   └── RaceProgressTest.js : 게임 진행(전진, 차수 출력) 관련 테스트 코드 
+│   └── WinnerTest.js : 최종 우승자(단독, 공동) 테스트 코드
 ├── node_modules/
 │   └── ...
 ├── constants/
@@ -61,7 +64,8 @@ precourse-2-javascript-carRacing/
 ```
 
 
-- ## 📌 코드 구조
+- ## 📌 App.js 함수 구조
+
 - `src/App.js` : 프로그램 실행 시작점, 전체 로직 포함 
   - `run()` : 사용자 입력 및 race() 호출
   - `race()` : 레이서 객체 생성, 차수 반복, 최종 우승자 출력
@@ -72,8 +76,6 @@ precourse-2-javascript-carRacing/
   - `printWinners()` : 최종 우승자 출력
   - `printRanking()` : 최종 순위표 출력 (공동 순위 반영) (출력 형식에 어긋난거 같아 주석 처리)
 
-- `constants/error.js` : 에러 메시지 상수화
-- `constants/message.js` : 입출력 메시지 상수화
 <br>
 
 ---
