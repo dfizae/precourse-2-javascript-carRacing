@@ -1,4 +1,5 @@
 import { Console, Random } from "@woowacourse/mission-utils";
+import { ERROR } from '../constants/error.js';
 
 class App {
   async run() {
@@ -6,7 +7,7 @@ class App {
     const trial = Number(await Console.readLineAsync('시도할 횟수는 몇 회인가요?\n'));
    
     if (Number.isNaN(trial) || trial <= 0) {
-      throw new Error('[ERROR] : 시도 횟수는 1 이상의 숫자여야 합니다.');
+      throw new Error(ERROR.INVALID_TRIAL_NUMBER);
     }
 
     await Console.print(`실행 결과\n`);
@@ -18,18 +19,18 @@ class App {
 
     const nameSet = new Set(names);
     if (names.length !== nameSet.size) {
-      throw new Error('[ERROR] : 중복된 레이서 이름이 존재합니다.');
+      throw new Error(ERROR.NAME_DUPLICATION);
     }
 
     const racers = names.map(name => {
       if (!name) 
-        throw new Error('[ERROR] : 레이서 명이 0자여서는 안됩니다.');
+        throw new Error(ERROR.EMPTY_NAME);
 
       if (name.length > 5) 
-        throw new Error('[ERROR] : 레이서 명이 5자 이하만 가능합니다.');
+        throw new Error(ERROR.NAME_TOO_LONG);
       
       if (/[^a-zA-Z가-힣]/.test(name)) 
-        throw new Error('[ERROR] : 레이서 명은 문자만 가능하며 숫자/특수문자 불가');
+        throw new Error(ERROR.TEXT_ONLY);
       
       return { name, position: 0 };
     });
